@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learnly — Turn lectures into smarter learning.</title>
+  <meta name="description" content="Learnly is an AI-powered student learning workspace where students upload lecture PDFs or TXT files to receive concise revision notes, key concepts, and a 5-question practice quiz." />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <!-- Ambient Gradient Lights & Grid Overlay -->
+  <div class="bg-ambient-lights">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+    <div class="bg-grid-overlay"></div>
+  </div>
+
+  <!-- SVG Gradient Definitions for Circular Meters -->
+  <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+    <defs>
+      <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#8b5cf6" />
+        <stop offset="50%" stop-color="#6366f1" />
+        <stop offset="100%" stop-color="#06b6d4" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="app-layout">
+    <!-- ====================================================================
+         1. Left Sidebar Navigation
+         ==================================================================== -->
+    <aside class="sidebar" id="app-sidebar" aria-label="Learnly Navigation">
+      <!-- Brand Header -->
+      <div class="sidebar-header">
+        <a href="/" class="nav-brand" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none;">
+          <div class="brand-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+              <path d="M6 6h10"></path>
+              <path d="M6 10h10"></path>
+              <path d="M12 18l3-3-3-3"></path>
+            </svg>
+          </div>
+          <div class="brand-text-wrap">
+            <span class="brand-name">Learnly</span>
+            <span class="brand-tagline-sub">Turn lectures into smarter learning.</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Nav Links -->
+      <nav class="sidebar-nav">
+        <span class="nav-section-label">Workspace</span>
+
+        <button class="sidebar-nav-btn active" data-nav="dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+          </svg>
+          <span>Dashboard</span>
+        </button>
+
+        <button class="sidebar-nav-btn" data-nav="my-notes">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+          <span>My Notes</span>
+          <span class="nav-badge-pill">4 Packs</span>
+        </button>
+
+        <button class="sidebar-nav-btn" data-nav="quiz-history">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          <span>Quiz History</span>
+          <span class="nav-badge-pill" style="background:rgba(16,185,129,0.15); color:#34d399; border-color:rgba(16,185,129,0.3);">92% Avg</span>
+        </button>
+
+        <span class="nav-section-label">Analytics & Preferences</span>
+
+        <button class="sidebar-nav-btn" data-nav="learning-progress">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="20" x2="12" y2="10"></line>
+            <line x1="18" y1="20" x2="18" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="16"></line>
+          </svg>
+          <span>Learning Progress</span>
+        </button>
+
+        <button class="sidebar-nav-btn" data-nav="settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <!-- Motivational Learning Card at Bottom -->
+      <div class="sidebar-motivation-card">
+        <div class="motivation-header">
+          <span class="motivation-title">🔥 Keep the Streak!</span>
+          <span class="streak-pill-mini">5 Days</span>
+        </div>
+        <p class="motivation-desc">You're in the top 10% this week. Complete 1 more quiz to hit your weekly mastery goal!</p>
+        <div class="motivation-progress-row">
+          <div class="motivation-bar-track">
+            <div class="motivation-bar-fill"></div>
+          </div>
+          <span class="motivation-percent">78%</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         2. Main Application Wrapper
+         ==================================================================== -->
+    <div class="main-wrapper">
+      <!-- Top Navigation Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="btn-mobile-sidebar-toggle" aria-label="Toggle Sidebar Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <!-- Search Bar with Keyboard Shortcut Hint -->
+          <div class="search-box-wrap">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="global-search-input" class="search-input" placeholder="Search your notes, topics, or lectures..." aria-label="Search study workspace" />
+            <div class="search-shortcut-kbd">
+              <span>⌘</span><span>K</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topbar Right Actions -->
+        <div class="topbar-right">
+          <button class="topbar-btn" id="btn-notifications-toggle" title="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="notification-dot"></span>
+          </button>
+
+          <div class="profile-pill-modern" id="profile-trigger" title="Aditi Singh — Student Profile">
+            <div class="avatar-circle-glow">AS</div>
+            <div class="profile-info">
+              <span class="profile-name">Aditi Singh</span>
+              <span class="profile-role">CS Student</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- UI State Demo Switcher Bar -->
+      <div class="state-switcher-bar">
+        <div class="state-switcher-title">
+          <span>⚙️ UI State Preview:</span>
+        </div>
+        <div class="state-pills">
+          <button class="state-btn active" data-state="default">Default SaaS View</button>
+          <button class="state-btn" data-state="empty">Empty State</button>
+          <button class="state-btn" data-state="loading">Loading State</button>
+          <button class="state-btn" data-state="uploaded">Uploaded File State</button>
+          <button class="state-btn" data-state="success">Success State</button>
+          <button class="state-btn" data-state="error">Error State</button>
+        </div>
+      </div>
+
+      <!-- Error Banner Mount -->
+      <div id="error-banner-mount"></div>
+
+      <!-- ====================================================================
+           3. Main Scrollable Content Container
+           ==================================================================== -->
+      <main class="content-container">
+        <!-- VIEW 1: Dashboard Main View -->
+        <div id="dashboard-view-section">
+          <!-- Hero Section -->
+          <section class="hero-futuristic" aria-labelledby="hero-main-heading">
+            <div class="hero-content-col">
+              <div class="hero-ai-badge">
+                <span class="pulse-dot"></span>
+                <span>AI-POWERED STUDY ASSISTANT</span>
+              </div>
+
+              <h1 id="hero-main-heading" class="hero-main-title">
+                Turn lectures into <span class="text-gradient-purple-blue">smarter learning.</span>
+              </h1>
+
+              <p class="hero-subtitle">
+                Upload your lecture material and instantly get concise revision notes, key concepts, and practice quizzes powered by AI.
+              </p>
+
+              <div class="hero-cta-group">
+                <button id="hero-btn-upload" class="btn btn-primary btn-lg">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  Upload Lecture
+                </button>
+
+                <button id="hero-btn-demo" class="btn btn-secondary btn-lg">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  Try Demo
+                </button>
+              </div>
+            </div>
+
+            <!-- Abstract AI Learning Illustration on Right Side -->
+            <div class="hero-art-col" aria-hidden="true">
+              <div class="ai-graphic-container">
+                <div class="graphic-glow-center"></div>
+
+                <!-- Central Glass Brain Card -->
+                <div class="graphic-central-card">
+                  <div class="brain-icon-glow">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"></path>
+                      <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"></path>
+                    </svg>
+                  </div>
+                  <span>Learnly AI Engine</span>
+                  <small>Neural Lecture Synthesis</small>
+                </div>
+
+                <!-- Floating Badges -->
+                <div class="floating-pill-badge badge-pos-1">
+                  <div class="pill-icon-dot" style="background:rgba(139,92,246,0.25); color:#a78bfa;">⚡</div>
+                  <span>Instant Revision Notes</span>
+                </div>
+
+                <div class="floating-pill-badge badge-pos-2">
+                  <div class="pill-icon-dot" style="background:rgba(6,182,212,0.25); color:#22d3ee;">🎯</div>
+                  <span>5-Q Practice Quiz</span>
+                </div>
+
+                <div class="floating-pill-badge badge-pos-3">
+                  <div class="pill-icon-dot" style="background:rgba(16,185,129,0.25); color:#34d399;">🧠</div>
+                  <span>98% Concept Recall</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Upload Section Mount -->
+          <section id="upload-mount" class="upload-container-outer" aria-label="Upload Lecture"></section>
+
+          <!-- Statistics Metric Cards Mount (4 Cards) -->
+          <section aria-labelledby="metrics-heading">
+            <div class="section-header-block">
+              <h2 id="metrics-heading" class="section-title-large">Study Performance Overview</h2>
+              <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Real-time student metrics</span>
+            </div>
+            <div id="metrics-mount"></div>
+          </section>
+
+          <!-- Quick Actions & Learning Progress Twin Grid -->
+          <section class="dashboard-twin-grid">
+            <!-- Quick Actions Panel -->
+            <div class="quick-actions-panel">
+              <div class="panel-header-row">
+                <h3 class="panel-heading">⚡ Quick Actions</h3>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Instant tools</span>
+              </div>
+              <div class="quick-actions-grid" id="quick-actions-mount"></div>
+            </div>
+
+            <!-- Learning Progress Panel -->
+            <div class="learning-progress-panel" id="learning-progress-widget-mount"></div>
+          </section>
+
+          <!-- Recent Activity Section Mount -->
+          <section aria-labelledby="activity-heading">
+            <div class="section-header-block">
+              <h2 id="activity-heading" class="section-title-large">Recent Lecture Activity</h2>
+              <span class="section-link-action" id="btn-view-all-activity">View all files →</span>
+            </div>
+            <div id="activity-mount"></div>
+          </section>
+
+          <!-- Revision Notes Preview Section Mount -->
+          <section id="notes-preview-section" style="margin-bottom: 3.5rem;" aria-labelledby="notes-preview-heading">
+            <div class="section-header-block">
+              <h2 id="notes-preview-heading" class="section-title-large">Revision Notes & Concepts Preview</h2>
+              <span class="badge badge-primary">Structured AI Output</span>
+            </div>
+            <div id="notes-preview-mount"></div>
+          </section>
+
+          <!-- 5-Question Quiz Preview Section Mount -->
+          <section id="quiz-preview-section" style="margin-bottom: 4rem;" aria-labelledby="quiz-preview-heading">
+            <div class="section-header-block">
+              <h2 id="quiz-preview-heading" class="section-title-large">5-Question Practice Quiz Preview</h2>
+              <span class="badge badge-success">Active Recall Engine</span>
+            </div>
+            <div id="quiz-preview-mount"></div>
+          </section>
+
+          <!-- Why Choose Learnly Section (4 Feature Cards) -->
+          <section class="why-learnly-section" aria-labelledby="why-heading">
+            <div class="section-header-block" style="text-align: center; display: block; margin-bottom: 2rem;">
+              <span class="badge badge-cyan" style="margin-bottom: 0.65rem;">Built for Student Success</span>
+              <h2 id="why-heading" class="section-title-large" style="font-size: 1.8rem;">Why Choose Learnly?</h2>
+              <p style="color: var(--text-secondary); font-size: 0.92rem; max-width: 540px; margin: 0.4rem auto 0;">
+                Designed specifically for university students to eliminate cramming and master coursework in minutes.
+              </p>
+            </div>
+            <div class="why-features-grid">
+              <div class="feature-futuristic-card">
+                <div class="feature-icon-box" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple-light); border: 1px solid rgba(139, 92, 246, 0.3);">
+                  ⚡
+                </div>
+                <h3 class="feature-heading">AI-Powered</h3>
+                <p class="feature-desc">Deep neural synthesis extracts high-yield takeaways, formulas, and terminology from raw lecture files.</p>
+              </div>
+
+              <div class="feature-futuristic-card">
+                <div class="feature-icon-box" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan-light); border: 1px solid rgba(6, 182, 212, 0.3);">
+                  ⏱️
+                </div>
+                <h3 class="feature-heading">Save Time</h3>
+                <p class="feature-desc">Condense 2-hour lectures into clean 5-minute study packs with bulleted topics and definitions.</p>
+              </div>
+
+              <div class="feature-futuristic-card">
+                <div class="feature-icon-box" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">
+                  📈
+                </div>
+                <h3 class="feature-heading">Boost Performance</h3>
+                <p class="feature-desc">5-question active recall quizzes test core principles and diagnose weak spots before exam day.</p>
+              </div>
+
+              <div class="feature-futuristic-card">
+                <div class="feature-icon-box" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);">
+                  🌐
+                </div>
+                <h3 class="feature-heading">Learn Anywhere</h3>
+                <p class="feature-desc">Responsive, lightweight interface optimized for seamless studying on laptops, tablets, and phones.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- VIEW 2: My Notes View -->
+        <div id="my-notes-view-section" style="display: none;"></div>
+
+        <!-- VIEW 3: Quiz History View -->
+        <div id="quiz-history-view-section" style="display: none;"></div>
+
+        <!-- VIEW 4: Learning Progress View -->
+        <div id="learning-progress-view-section" style="display: none;"></div>
+
+        <!-- VIEW 5: Settings View -->
+        <div id="settings-view-section" style="display: none;"></div>
+      </main>
+
+      <!-- ====================================================================
+           4. Futuristic Footer
+           ==================================================================== -->
+      <footer class="futuristic-footer">
+        <div class="footer-brand-wrap">
+          <div class="brand-icon-box" style="width: 30px; height: 30px; border-radius: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+              <path d="M6 6h10"></path>
+              <path d="M6 10h10"></path>
+            </svg>
+          </div>
+          <span class="brand-name" style="font-size: 1.1rem;">Learnly</span>
+          <span style="color: var(--text-muted); font-size: 0.8rem;">— Turn lectures into smarter learning.</span>
+        </div>
+        <div class="footer-text-meta">
+          <span>AI-Powered Student Learning Workspace • Made for High-Performance Students</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- PDF.js library for client-side PDF parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
+
+  <!-- Application Scripts -->
+  <script src="/static/js/mockData.js"></script>
+  <script src="/static/js/textExtractor.js"></script>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/quiz.js"></script>
+  <script src="/static/js/components.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

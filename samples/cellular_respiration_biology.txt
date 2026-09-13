@@ -1,0 +1,32 @@
+# Lecture 7: Cellular Respiration, Glycolysis & ATP Synthesis
+
+Professor: Dr. Marcus Thorne
+Course: BIO 110 - Principles of Cellular Biology
+
+## 1. Overview of Cellular Respiration
+Cellular respiration is a set of metabolic reactions and processes that take place in the cells of organisms to convert biochemical energy from nutrients into adenosine triphosphate (ATP), and then release waste products. The catabolic breakdown of glucose can be summarized by the overall chemical equation:
+C6H12O6 + 6 O2 -> 6 CO2 + 6 H2O + ~30-32 ATP
+
+Cellular respiration is divided into three primary metabolic stages:
+1. Glycolysis (occurs in the cytoplasm)
+2. The Citric Acid Cycle / Krebs Cycle (occurs in the mitochondrial matrix)
+3. Oxidative Phosphorylation via the Electron Transport Chain and Chemiosmosis (occurs across the inner mitochondrial membrane)
+
+## 2. Stage 1: Glycolysis
+Glycolysis is an anaerobic process (it does not require molecular oxygen) that breaks down one 6-carbon glucose molecule into two 3-carbon pyruvate molecules.
+- Energy Investment Phase: Consumes 2 ATP molecules to phosphorylate glucose, making it reactive and unstable.
+- Energy Payoff Phase: Produces 4 ATP molecules via substrate-level phosphorylation and 2 molecules of NADH.
+- Net Yield per Glucose: 2 Pyruvate + 2 Net ATP + 2 NADH.
+
+## 3. Pyruvate Oxidation & The Krebs Cycle
+Before entering the citric acid cycle, pyruvate is transported into the mitochondrial matrix:
+- Pyruvate Oxidation: Pyruvate (3C) is converted into Acetyl-CoA (2C), releasing 1 CO2 and generating 1 NADH per pyruvate.
+- Citric Acid Cycle: Acetyl-CoA combines with oxaloacetate (4C) to form citrate (6C). Through a series of redox reactions, citrate is oxidized back to oxaloacetate.
+- Total Yield per glucose (2 turns of the cycle): 2 ATP/GTP, 6 NADH, 2 FADH2, and 4 CO2 released.
+
+## 4. Stage 3: Oxidative Phosphorylation & ATP Synthase
+Oxidative phosphorylation accounts for almost 90% of the ATP generated during respiration.
+- Electron Transport Chain (ETC): High-energy electrons carried by NADH and FADH2 are transferred through a series of multi-protein complexes (Complexes I to IV).
+- Proton Gradient: As electrons move down the energy gradient, protons (H+) are pumped across the inner mitochondrial membrane from the matrix into the intermembrane space, creating a powerful proton-motive force.
+- Chemiosmosis & ATP Synthase: Protons flow back down their electrochemical gradient into the matrix through the enzyme ATP Synthase. The mechanical rotation of ATP Synthase synthesizes ATP from ADP and inorganic phosphate.
+- Final Electron Acceptor: Molecular Oxygen (O2) acts as the terminal electron acceptor, combining with electrons and protons to form water (H2O).

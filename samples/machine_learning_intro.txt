@@ -1,0 +1,45 @@
+# Lecture 4: Introduction to Supervised Machine Learning & Optimization
+
+Professor: Dr. Elena Vance
+Course: CS 480 - Artificial Intelligence & Data Systems
+
+## 1. The Supervised Learning Paradigm
+Supervised learning is the machine learning task of learning a function that maps an input to an output based on example input-output pairs. It infers a function from labeled training data consisting of a set of training examples. In supervised learning, each example is a pair consisting of an input object (typically a vector of features) and a desired output value (also called the supervisory signal or label).
+
+A supervised learning algorithm analyzes the training data and produces an inferred function, which can be used for mapping new examples. An optimal scenario will allow for the algorithm to correctly determine the class labels for unseen instances.
+
+Key Terminology:
+- Features: Individual measurable properties or characteristics of a phenomenon being observed (represented as matrix X).
+- Ground Truth Label: The true output value or category associated with an input sample (represented as vector y).
+- Hypothesis Function: The parameterized mathematical mapping h_theta(x) that makes predictions given inputs x.
+- Loss Function: A metric that quantifies the difference or error between the predicted value and the true label for an individual training instance.
+- Cost Function: The average loss computed across the entire training dataset.
+
+## 2. Linear Regression & Gradient Descent
+Linear regression models the relationship between a scalar response and one or more explanatory variables. In simple linear regression, the model assumes a linear relationship:
+h_theta(x) = theta_0 + theta_1 * x_1
+
+The standard cost function used for linear regression is Mean Squared Error (MSE):
+J(theta) = (1 / 2m) * sum((h_theta(x_i) - y_i)^2)
+
+Optimization via Gradient Descent:
+Gradient descent is an iterative first-order optimization algorithm for finding a local minimum of a differentiable function. The algorithm updates parameters iteratively in the opposite direction of the gradient of the cost function:
+theta_j := theta_j - alpha * (d/d_theta_j) J(theta)
+
+Where:
+- alpha (Learning Rate): A hyperparameter that determines the step size at each iteration while moving toward a minimum.
+- If alpha is too small, gradient descent will be extremely slow to converge.
+- If alpha is too large, gradient descent can overshoot the minimum, fail to converge, or even diverge.
+
+## 3. Generalization, Overfitting, and Regularization
+The ultimate goal of machine learning is generalization—the model's ability to perform well on new, unseen data rather than just the training dataset.
+
+Key Concepts:
+- Underfitting (High Bias): The model is too simple to capture the underlying structure of the data (e.g., fitting a straight line to quadratic data).
+- Overfitting (High Variance): The model fits the training data too closely, capturing noise rather than the general trend.
+- Bias-Variance Tradeoff: The fundamental dilemma in supervised learning wherein minimizing bias tends to increase variance and vice-versa.
+- Regularization (L1 Lasso / L2 Ridge): Techniques that add a penalty term to the loss function to discourage overly complex models and prevent overfitting by constraining parameter magnitudes.
+
+## 4. Evaluation Metrics
+- Regression: Mean Squared Error (MSE), Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), R-squared.
+- Classification: Accuracy, Precision, Recall, F1-Score, ROC-AUC Curve.
